@@ -1,2 +1,2 @@
 # ControlMiembros
-Proyecto web con java(jsp) como backend 
+Proyecto web con java(jsp) como backend, conexion a base de datos con jdbc
