@@ -3,36 +3,35 @@ package dominio;
 
 public class Miembro {
     
-    int idMiembro;
-    String nombre;
-    String apellido;
-    String telefono;
-    String email;
-    String tMembresia;
+    private int idMiembro;
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String email;
+    private String membresia;
     
     public Miembro(){
-        
     }
     
     public Miembro(int idMiembro){
         this.idMiembro=idMiembro;
     }
     
-    public Miembro(String nombre, String apellido, String telefono, String email, String tMembresia){
+    public Miembro(String nombre, String apellido, String telefono, String email, String membresia){
         this.nombre=nombre;
         this.apellido=apellido;
         this.telefono=telefono;
         this.email=email;
-        this.tMembresia=tMembresia;
+        this.membresia=membresia;
     }
     
-    public Miembro(int idMiembro, String nombre, String apellido, String telefono, String email, String tMembresia){
+    public Miembro(int idMiembro, String nombre, String apellido, String telefono, String email, String membresia){
         this.idMiembro=idMiembro;
         this.nombre=nombre;
         this.apellido=apellido;
         this.telefono=telefono;
         this.email=email;
-        this.tMembresia=tMembresia;
+        this.membresia=membresia;
     }
     
     public int getIdMiembro(){
@@ -75,16 +74,16 @@ public class Miembro {
     }
     
     
-    public String getTMembresia(){
-        return tMembresia;
+    public String getMembresia(){
+        return membresia;
     }
-    public void setTMembresia(String tMembresia){
-        this.tMembresia= tMembresia;
+    public void setMembresia(String membresia){
+        this.membresia= membresia;
     }
 
     @Override
     public String toString() {
-        return "miembro{" + "idMiembro=" + idMiembro + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", email=" + email + ", tMembresia=" + tMembresia + '}';
+        return "miembro{" + "idMiembro=" + idMiembro + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + ", email=" + email + ", membresia=" + membresia + '}';
     }
     
     

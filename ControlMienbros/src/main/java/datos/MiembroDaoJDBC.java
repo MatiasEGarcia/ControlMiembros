@@ -1,25 +1,24 @@
-
+ 
 package datos;
 
 import dominio.Miembro;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 public class MiembroDaoJDBC {
     
-    private static final String SELECT="SELECT id_miembro, nombre, apellido, telefono, email, t_membresia FROM miembro";
+    private static final String SQL_SELECT="SELECT id_miembro, nombre, apellido, telefono, email, membresia FROM miembro";
     
-    private static final String SELECT_BY_ID="SELECT id_miembro, nombre, apellido, telefono, email, t_membresia FROM miembro WHERE id_miembro=?";
+    private static final String SQL_SELECT_BY_ID="SELECT id_miembro, nombre, apellido, telefono, email, membresia FROM miembro WHERE id_miembro=?";
     
-    private static final String INSERT="INSERT into miembro nombre, apellido, telefono, email, t_membresia VALUES (?, ?, ?, ?, ?)";
+    private static final String SQL_INSERT="INSERT into miembro nombre, apellido, telefono, email, membresia VALUES (?, ?, ?, ?, ?)";
     
-    private static final String UPDATE="UPDATE miembro SET nombre=?, apellido=?, telefono=?, email=?, t_membresia=? WHERE id_miembro=?";
+    private static final String SQL_UPDATE="UPDATE miembro SET nombre=?, apellido=?, telefono=?, email=?, membresia=? WHERE id_miembro=?";
     
-    private static final String DELETE="DELETE FROM miembro WHERE id_miembro=?";
+    private static final String SQL_DELETE="DELETE FROM miembro WHERE id_miembro=?";
     
     
     public List<Miembro> listar(){
@@ -31,17 +30,18 @@ public class MiembroDaoJDBC {
         
         try {
             conn=Conexion.getConection();
-            stmt=conn.prepareStatement(SELECT);
+            stmt=conn.prepareStatement(SQL_SELECT);
             rs=stmt.executeQuery();
             
             while(rs.next()){
+                int idMiembro=rs.getInt("id_miembro");
                 String nombre=rs.getString("nombre");
                 String apellido=rs.getString("apellido");
                 String telefono=rs.getString("telefono");
                 String email=rs.getString("email");
-                String tMembresia=rs.getString("t_membresia");
+                String membresia=rs.getString("membresia");
                 
-                miembro=new Miembro(nombre, apellido, telefono, email, tMembresia);
+                miembro=new Miembro(idMiembro, nombre, apellido, telefono, email, membresia);
                 
                 miembros.add(miembro);
             }
@@ -64,7 +64,7 @@ public class MiembroDaoJDBC {
         
         try {
             conn=Conexion.getConection();
-            stmt=conn.prepareStatement(SELECT_BY_ID);
+            stmt=conn.prepareStatement(SQL_SELECT_BY_ID);
             stmt.setInt(1, miembro.getIdMiembro());
             rs=stmt.executeQuery();
             
@@ -74,13 +74,13 @@ public class MiembroDaoJDBC {
             String apellido= rs.getString("apellido");
             String telefono= rs.getString("telefono");
             String email= rs.getString("email");
-            String tMembresia= rs.getString("t_membresia");
+            String membresia= rs.getString("membresia");
             
             miembro.setNombre(nombre);
             miembro.setApellido(apellido);
             miembro.setTelefono(telefono);
             miembro.setEmail(email);
-            miembro.setTMembresia(tMembresia);
+            miembro.setMembresia(membresia);
             
             
         } catch (SQLException ex) {
@@ -100,13 +100,13 @@ public class MiembroDaoJDBC {
         
         try {
             conn=Conexion.getConection();
-            stmt=conn.prepareStatement(INSERT);
+            stmt=conn.prepareStatement(SQL_INSERT);
             
             stmt.setString(1, miembro.getNombre());
             stmt.setString(2, miembro.getApellido());
             stmt.setString(3, miembro.getTelefono());
             stmt.setString(4, miembro.getEmail());
-            stmt.setString(5, miembro.getTMembresia());
+            stmt.setString(5, miembro.getMembresia());
             
             stmt.executeUpdate();
            
@@ -125,13 +125,13 @@ public class MiembroDaoJDBC {
         
         try {
             conn=Conexion.getConection();
-            stmt=conn.prepareStatement(UPDATE);
+            stmt=conn.prepareStatement(SQL_UPDATE);
             
             stmt.setString(1, miembro.getNombre());
             stmt.setString(2, miembro.getApellido());
             stmt.setString(3, miembro.getTelefono());
             stmt.setString(4, miembro.getEmail());
-            stmt.setString(5, miembro.getTMembresia());
+            stmt.setString(5, miembro.getMembresia());
             stmt.setInt(6, miembro.getIdMiembro());
             
             stmt.executeUpdate();
@@ -152,7 +152,7 @@ public class MiembroDaoJDBC {
         
         try {
             conn=Conexion.getConection();
-            stmt=conn.prepareStatement(DELETE);
+            stmt=conn.prepareStatement(SQL_DELETE);
             
             stmt.setInt(1, miembro.getIdMiembro());
             stmt.executeUpdate();
