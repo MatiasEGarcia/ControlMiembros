@@ -2,6 +2,7 @@
 Proyecto web con java, base de datos Mysql con MySQL Workbench 8.0 CE, y en el cliente JSP
 
 codigo Mysql
+
 CREATE DATABASE control_miembros;
 
 USE control_miembros;
