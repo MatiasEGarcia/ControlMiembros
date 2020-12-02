@@ -1,0 +1,395 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor {
+  width: 1100px;
+  height: auto;
+  margin: auto;
+  background: #c6c8ee;
+  border: solid 1px black;
+}
+
+.header .titulo .barra .agregar-Miembro .contenido .tabla_Miembros .columna {
+  display: block;
+}
+
+/*-----------------------------------------*/
+.header {
+  width: 1100px;
+  height: 145px;
+  background: #8585d7;
+  border-bottom: black 1px;
+}
+
+.titulo {
+  text-align: right;
+  font-size: 45px;
+  padding-top: 21px;
+  padding-right: 83px;
+  text-transform: uppercase;
+}
+
+.barra {
+  text-align: right;
+}
+
+.barra li {
+  list-style: none;
+  border: solid 1px black;
+  display: inline-block;
+  text-align: right;
+}
+
+#agregarMiembro {
+  margin-right: 82px;
+  margin-top: 12px;
+  padding: 12px 15px;
+  border-radius: 7px;
+  background: #bd6b73;
+  transition: 2s;
+  font-size: 20px;
+}
+
+#agregarMiembro:hover {
+  background: #fcfcff;
+  cursor: pointer;
+}
+.icono {
+  padding-right: 5px;
+  width: 20px;
+  height: 20px;
+}
+/*CONTENIDO*/
+/*---------------------------------------------------------*/
+
+.contenido {
+  width: auto;
+  height: auto;
+  /*border: solid 1px black;*/
+  padding-bottom: 15px;
+  float: left;
+}
+.titulo-Tabla-Miembros {
+  margin-left: 190px;
+  text-transform: uppercase;
+  padding-top: 15px;
+  font-size: 30px;
+}
+
+.tabla-Miembros {
+  width: 600px;
+  height: auto;
+  background: #a49dd9;
+  text-transform: uppercase;
+  text-align: center;
+  border: solid 1px black;
+  border-collapse: collapse;
+  margin-left: 50px;
+}
+
+.tabla-Miembros th {
+  font-size: 22px;
+  background: #524b89;
+}
+
+.tabla-Miembros td {
+  padding: 10px 20px;
+  text-transform: capitalize;
+  border: solid 1px black;
+  font-size: 20px;
+}
+.tabla-Miembros tr:hover{
+  background: #9185cc;
+  
+}
+
+.eliminarLink,
+.volverLink,
+.accionEditarLink{
+    text-decoration: none;
+}
+
+.eliminarLink,
+.volverLink,
+.accionEditarLink:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.eliminarLink,
+.volverLink,
+.accionEditarLink:link{
+    text-decoration: none;
+    color: black;
+}
+
+.accionEditarLink{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: 2s;
+    background: #bd6b73;
+}
+.accionEditarLink:hover{
+    background: #fcfcff;
+}
+
+/*Columna(sidebar)*/
+/*------------------------------------------*/
+.columna {
+  margin-left: 50px;
+  float: left;
+  width: 382px;
+  height: auto;
+  /*border: solid 1px black;*/
+}
+
+.modulo1,
+.modulo {
+  width: 270px;
+  height: 150px;
+  background: #a49dd9;
+  margin: 45px auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+/*IMAGENES*/
+/*------------------------------------------*/
+.imgGrupo{
+  padding: 5px;
+  width: 50%;
+  height: 50%;
+}
+.imgHombre {
+  position: absolute;
+  width: 253.67px;
+  height: 331px;
+  left: 730px;
+  top: 207px;
+}
+
+.imgGrupito {
+  position: absolute;
+  width: 234px;
+  height: 140px;
+  left: 190px;
+  top: 7px;
+}
+
+/*PIE*/
+/*---------------------------------------------*/
+
+.pie {
+  clear: both;
+  background: #edbcc0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+
+.imgCopy{
+  width: 20px;
+  height: 20px;
+}
+
+.firma,
+.atribucion{
+  margin: 15px;
+}
+
+/*Modal*/
+/*--------------------------------------------------*/
+.flex {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#miModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  overflow: auto;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.445);
+}
+
+.contenido-Modal {
+  position: relative;
+  margin: auto;
+  width: 35%;
+  height: auto;
+  background-color: #373f5f;
+  animation-name: fadeInDown;
+  animation-duration: 2s;
+}
+
+.fondo-imagen {
+  height: 100%;
+  width: 100%;
+  background: url("img/fondo.png");
+  background-position: center; /*esto es para que la imagen se adapte al espacio*/
+  background-size: cover; /*esto es para que la imagen se adapte al espacio*/
+}
+
+.header-modal {
+  display: flex;
+  justify-content: space-between;
+  color: #fcfcff;
+  padding: 10px;
+  font-size: 27px;
+  height: 60px;
+}
+.close {
+  color: black;
+  font-size: 40px;
+}
+
+.close:hover {
+  cursor: pointer;
+  font-weight: bold;
+  animation-name: closee;
+  animation-duration: 2s;
+}
+
+@keyframes closee {
+  from {
+    font-size: 40px;
+  }
+  to {
+    font-size: 60px;
+  }
+}
+.form-agregar-miembro {
+  padding: 20px;
+}
+.form-agregar-miembro label {
+  font-size: 25px;
+  color: #fcfcff;
+}
+.form-agregar-miembro input {
+  width: 95%;
+  opacity: 50%;
+  border: none;
+  border-bottom: 3px solid black;
+  padding: 10px;
+  outline: 0;
+  margin-bottom: 15px;
+  margin-top: 5px;  
+  border-radius: 7px;
+}
+
+.form-agregar-miembro select {
+  width: 20%;
+  font-size: 16px;
+  padding: 7px;
+  margin: 5px;
+}
+.div-button {
+  text-align: center;
+}
+.div-button button {
+  width: 40%;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  border-style: none;
+  background: none;
+  transition: 1s;
+  text-transform: uppercase;
+}
+.div-button button:hover {
+  background: #fcfcff;
+  cursor: pointer;
+}
+.div-button button:active {
+  box-shadow: 0px 0px 5px 15px #58c2dd;
+}
+
+/*------------------modificarMiembros-----------------------*/
+
+#form-modificar-miembro {
+  background: #a49dd9;
+  width: 100%;
+  height: 100%;
+  margin-left: 10px;
+  margin-top: 3%;
+  padding: 15px 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#form-modificar-miembro label,
+#form-modificar-miembro input {
+  margin: 7px;
+  margin-bottom: 18px;
+}
+#form-modificar-miembro label {
+  font-size: 25px;
+}
+#form-modificar-miembro input {
+  padding: 10px;
+  border-radius: 5px;
+  width: 80%;
+  border-style: none;
+}
+
+.block {
+  grid-column: 1/3;
+}
+
+.titulo-editar {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+#form-modificar-miembro select {
+  width: 25%;
+  font-size: 16px;
+  padding: 7px;
+  margin: 5px;
+}
+
+#volver,
+#eliminar-Miembro {
+  margin-top: 15px;
+  padding: 12px 15px;
+  font-size: 20px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+#volver {
+  background: #dafeb7;
+}
+#eliminar-Miembro {
+  margin-left: 2%;
+  margin-right: 10%;
+  background: #bc7fc3;
+}
+
+.flechaIzquieda,
+.imagenTacho {
+  width: 30px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.detallePerfil {
+  position: absolute;
+  right: 10%;
+  top: 33.67%;
+  bottom: 16.67%;
+}

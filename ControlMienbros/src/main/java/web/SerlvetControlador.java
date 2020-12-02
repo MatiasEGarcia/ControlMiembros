@@ -21,7 +21,17 @@ public class SerlvetControlador extends HttpServlet{
         String accion = request.getParameter("accion");
         
         if(accion!=null){
-            
+            switch(accion){
+                case "editar":
+                    this.pagEditarMiembro(request, response);
+                    break;
+                case "eliminar":
+                    this.eliminarMiembro(request, response);
+                    break;
+                default:
+                    this.accionDefault(request, response);
+            }
+           
         }else{
             this.accionDefault(request, response);
         }
@@ -33,10 +43,84 @@ public class SerlvetControlador extends HttpServlet{
         List<Miembro> miembros= new MiembroDaoJDBC().listar();
         HttpSession sesion= request.getSession();
         sesion.setAttribute("miembros", miembros);
-        sesion.setAttribute("cantidadDeMiembros",miembros.size());
+        sesion.setAttribute("cantidadMiembros",miembros.size());
         
         response.sendRedirect("miembros.jsp");
         
     }
+
+    private void pagEditarMiembro(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int idMiembro=Integer.parseInt(request.getParameter("idMiembro"));
+        Miembro miembroEditar= new MiembroDaoJDBC().encontrar(new Miembro(idMiembro));
+        
+        request.setAttribute("miembroEditar", miembroEditar);
+        request.getRequestDispatcher("editar.jsp").forward(request, response);
+    }
     
+     private void eliminarMiembro(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+        int idMiembro= Integer.parseInt(request.getParameter("idMiembro"));
+        Miembro miembro=new Miembro(idMiembro);
+
+        int registrosModificados= new MiembroDaoJDBC().eliminar(miembro);
+        System.out.println("registrosModificados = " + registrosModificados);
+        
+        this.accionDefault(request, response);
+    }
+    
+    
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        String accion=request.getParameter("accion");
+        
+        if(accion!=null){
+            switch(accion){
+                case "modificar":
+                    this.modificarMiembro(request, response);
+                    break;
+                case "agregar":
+                    this.agregarMiembro(request, response);
+                    break;
+                default:
+                    this.accionDefault(request, response);
+            }
+        }else{
+            this.accionDefault(request, response);
+        }
+               
+    }
+
+    private void modificarMiembro(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+        int idMiembro= Integer.parseInt(request.getParameter("idMiembro"));
+        String nombre= request.getParameter("nombre");
+        String apellido=request.getParameter("apellido");
+        String email=request.getParameter("email");
+        String telefono=request.getParameter("telefono");
+        String membresia=request.getParameter("membresia");
+        
+        Miembro miembro=new Miembro(idMiembro, nombre, apellido, email, telefono, membresia);
+        
+        int regristrosModificados=new MiembroDaoJDBC().actualizar(miembro);
+        
+        this.accionDefault(request, response);
+    }
+
+    private void agregarMiembro(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+        String nombre=request.getParameter("nombre");
+        String apellido=request.getParameter("apellido");
+        String email=request.getParameter("email");
+        String telefono=request.getParameter("telefono");
+        String membresia=request.getParameter("membresia");
+        
+        Miembro miembro=new Miembro(nombre, apellido, email, telefono, membresia);
+        
+        int registrosModificados=new MiembroDaoJDBC().agregar(miembro);
+        
+        this.accionDefault(request, response);
+        
+    }  
+
+   
 }
